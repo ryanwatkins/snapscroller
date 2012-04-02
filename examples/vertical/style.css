@@ -1,0 +1,32 @@
+/* style.css */
+
+.scroller {
+  height: 240px;
+  width: 240px;
+  border: 1px solid black;
+}
+
+.scroller-slide {
+  height: 240px;
+  width: 200px;
+}
+
+.scroller-slide.slide-a {
+  background-color: rgba(255,0,0,0.5);
+}
+
+.scroller-slide.slide-b {
+  background-color: rgba(0,255,0,0.5);
+}
+
+.scroller-slide.slide-c {
+  background-color: rgba(0,0,255,0.5);
+}
+
+.scroller-slide.slide-d {
+  background-color: rgba(255,0,255,0.5);
+}
+
+.scroller-slide.slide-e {
+  background-color: rgba(0,255,255,0.5);
+}
