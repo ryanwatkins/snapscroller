@@ -1,0 +1,30 @@
+/* style.css */
+
+
+/* make them layout horizontal */
+.scroller > div {
+  white-space: nowrap;
+}
+.scroller-slide {
+  display: inline-block;
+}
+
+.scroller {
+  height: 240px;
+  width: 240px;
+  border: 1px solid black;
+}
+
+.scroller-slide {
+  height: 200px;
+  width: 240px;
+  background-color: rgba(0,0,255,0.5);
+}
+
+.scroller-slide:first-child {
+  background-color: rgba(255,0,0,0.5);
+}
+
+.scroller-slide:last-child {
+  background-color: rgba(0,255,0,0.5);
+}

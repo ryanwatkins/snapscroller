@@ -1,0 +1,4 @@
+- vertical
+- revealOffset
+
+- non-TouchScrollStrategy version? 
