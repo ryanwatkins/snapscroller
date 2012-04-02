@@ -41,12 +41,12 @@ enyo.kind({
 
   scrollerSnapFinishHandler: function(inSender, inEvent) {
     this.log(this.$.snapscroller.getIndex());
-    this.$.state.setContent(this.$.snapscroller.getIndex());
+    this.$.state.setContent("position: " + this.$.snapscroller.getIndex());
   },
 
   scrollerSnapHandler: function(inSender, inEvent) {
     this.log(this.$.snapscroller.getIndex());
-    this.$.state.setContent(this.$.snapscroller.getIndex());
+    this.$.state.setContent("position: " + this.$.snapscroller.getIndex());
   }
 
 });

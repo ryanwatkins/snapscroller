@@ -7,8 +7,9 @@
 }
 
 .scroller-slide {
-  height: 240px;
-  width: 200px;
+  height: 200px;
+  width: 160px;
+  padding: 20px;
 }
 
 .scroller-slide.slide-a {

@@ -16,9 +16,10 @@
 }
 
 .scroller-slide {
-  height: 200px;
-  width: 200px;
+  height: 160px;
+  width: 160px;
   background-color: rgba(0,0,255,0.5);
+  padding: 20px;
 }
 
 .scroller-slide:nth-child(2) {

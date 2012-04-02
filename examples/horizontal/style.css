@@ -16,8 +16,9 @@
 }
 
 .scroller-slide {
-  height: 200px;
-  width: 240px;
+  height: 160px;
+  width: 200px;
+  padding: 20px;
   background-color: rgba(0,0,255,0.5);
 }
 
