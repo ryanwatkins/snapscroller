@@ -6,9 +6,11 @@ enyo.kind({
   components: [
 
     { name: "snapscroller", kind: "SnapScroller", classes: "scroller",
-      horizontal: "scroll", vertical: "hidden",
+
+      horizontal: "scroll", vertical: "hidden", // only scroll horizontal
       onSnap: "scrollerSnapHandler",
       onSnapFinish: "scrollerSnapFinishHandler",
+      // css required to stack items horizontally for scroll
       components: [
         { name: "slide-a", classes: "scroller-slide", content: "Slide A" },
         { name: "slide-b", classes: "scroller-slide", content: "Slide B" },

@@ -26,7 +26,11 @@ enyo.kind({
     /**
     Sets the index directly w/o animation or get the current state
     */
-    index: ""
+    index: "",
+    /**
+    Num of px to reveal of the previous item in the list
+    */
+    peek: ""
   },
 
   events: {
@@ -57,12 +61,34 @@ enyo.kind({
     // make this go faster
     this.$.strategy.$.scrollMath.kFrictionDamping = 0.85;
 
+    // TODO: detect if these get changed post-create
     if ((this.horizontal == 'scroll') ||
         (this.horizontal == 'auto') ||
         (this.horizontal == 'default') ) {
       this.scrollHorizontal = true;
     } else {
       this.scrollHorizontal = false;
+    }
+  },
+
+  rendered: function() {
+    this.inherited(arguments);
+    this.peekChanged();
+  },
+
+  peekChanged: function() {
+    var peek = this.getPeek();
+
+    // a bit of a hack, as this would clobber existing styles
+    var scroller = this.$.strategy.$.client;
+    if (peek && scroller) {
+      if (this.scrollHorizontal) {
+        scroller.applyStyle("padding-left", ("" + peek + "px"));
+        scroller.applyStyle("padding-right", ("" + peek + "px"));
+      } else {
+        scroller.applyStyle("padding-top", ("" + peek + "px"));
+        scroller.applyStyle("padding-left", ("" + peek + "px"));
+      }
     }
   },
 
@@ -74,11 +100,10 @@ enyo.kind({
   },
 
   doScrollStart: function(inScrollerStrategy, inScrollMath) { // ?
-//    this.log(arguments);
     this.position.start = this.getCurrentPosition();
   },
+
   doScroll: function(inScrollerStrategy, inScrollMath) { // ??
-//    this.log(arguments);
     this.position.current = this.getCurrentPosition();
     if (this.$.strategy.dragging) {
       this.cansnap = true;
@@ -90,14 +115,14 @@ enyo.kind({
     }
     this.position.previous = this.position.current;
   },
+
   doScrollStop: function(inScrollerStrategy, inScrollMath) {  // ?
-//    this.log(arguments);
     if (this.snapping) {
       this.snapping = false;
       // TODO: force scroll to exact px.
       var position = this.getCurrentPosition();
       if (position != this.position.to) {
-        this.log("delta: " + Math.abs(position - this.position.to));
+        // this.log("delta: " + Math.abs(position - this.position.to));
         this.directScrollTo(this.position.to);
       }
       this.doSnapFinish();
@@ -106,12 +131,11 @@ enyo.kind({
 
   // scroll to a position for snapping animation
   snapScrollTo: function(inPosition) {
-    this.log(inPosition);
+    // this.log(inPosition);
     this.snapping = true;
     this.position.to = inPosition;
 
     this.scrollHorizontal ? this.scrollTo(inPosition, 0) : this.scrollTo(0, inPosition);
-
   },
 
   // move the scroller directly to a position - used to cleanup end of scroll
@@ -125,7 +149,7 @@ enyo.kind({
 
   snap: function() {
     var position = this.calculateSnapIndex();
-    this.log(position);
+    // this.log(position);
     if (position !== undefined) {
       this.snapTo(position);
     }
@@ -134,7 +158,6 @@ enyo.kind({
   // get the current scroll position
   getCurrentPosition: function() {
     var position = this.scrollHorizontal ? this.getScrollLeft() : this.getScrollTop();
-    // this.log(position);
     return position;
   },
 
@@ -142,26 +165,27 @@ enyo.kind({
   calculatePosition: function(inIndex) {
     var controls = this.getControls().slice(1);  // because the ScrollStrategy appears to be the first one ...
     var control = controls[inIndex];
-//    this.log(control);
     if (control && control.hasNode()) {
       var node = control.hasNode();
       var position = this.scrollHorizontal ?  node.offsetLeft : node.offsetTop;
+      if (this.peek) { // account for peek
+        position = position - this.peek;
+      }
     }
-//    this.log(position);
     return position;
   },
 
   calculateSnapIndex: function() {
-    this.log();
+    // this.log();
     var forward = ((this.position.current - this.position.previous) > 0);
-    // TODO: calculate position to snap to
+    // calculate position to snap to
     var controls = this.getControls().slice(1);
 
     for (var l=0; l<controls.length; l++) {
       var node = controls[l].hasNode();
       var edge = this.scrollHorizontal ? node.offsetLeft : node.offsetTop;
 
-      this.log(this.position.current, edge, l);
+      // this.log(this.position.current, edge, l);
       if (this.position.current < edge) {
         if (forward) {
           return l;
@@ -179,7 +203,6 @@ enyo.kind({
   Scrolls to the position of the control at inIndex.
   */
   snapTo: function(inIndex) {
-    this.log(inIndex);
     this.prevIndex = this.index;
 
     var position = this.calculatePosition(inIndex);
@@ -191,7 +214,6 @@ enyo.kind({
         this.snapScrollTo(position);
       }
     }
-
   },
 
   prev: function() {

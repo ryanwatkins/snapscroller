@@ -6,15 +6,16 @@ enyo.kind({
   components: [
 
     { name: "snapscroller", kind: "SnapScroller", classes: "scroller",
-      horizontal: "hidden", vertical: "scroll", // onluy scroll vertical
+      horizontal: "scroll", vertical: "hidden", // only scroll horizontal
+      peek: "20", // px of previous item to revel
       onSnap: "scrollerSnapHandler",
       onSnapFinish: "scrollerSnapFinishHandler",
       components: [
-        { name: "slide-a", classes: "scroller-slide slide-a", content: "Slide A - Top" },
-        { name: "slide-b", classes: "scroller-slide slide-b", content: "Slide B" },
-        { name: "slide-c", classes: "scroller-slide slide-c", content: "Slide C" },
-        { name: "slide-d", classes: "scroller-slide slide-d", content: "Slide D" },
-        { name: "slide-e", classes: "scroller-slide slide-e", content: "Slide E - Bottom" }
+        { name: "slide-a", classes: "scroller-slide", content: "Slide A" },
+        { name: "slide-b", classes: "scroller-slide", content: "Slide B" },
+        { name: "slide-c", classes: "scroller-slide", content: "Slide C" },
+        { name: "slide-d", classes: "scroller-slide", content: "Slide D" },
+        { name: "slide-e", classes: "scroller-slide", content: "Slide E" }
       ]
     },
 
@@ -36,6 +37,8 @@ enyo.kind({
       this.$.snapscroller.next();
     } else {
       this.$.snapscroller.snapTo(inSender.slide);
+      // this would do the same, but without animation
+      // this.$.snapscroller.setIndex(inSender.slide);
     }
   },
 
