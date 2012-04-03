@@ -1,2 +1,3 @@
-- revealOffset
-- non-TouchScrollStrategy version? 
+- see if the logic for which direction to snap to makes sense in Touch cases.
+- investigate if we can use non-TouchScrollStrategy versions where possible
+

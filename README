@@ -1,5 +1,26 @@
 SnapScroller - an Enyo 2.0 kind to Snap to scrolling positions
 
+A simple scroller that 'snaps' to the position of its controls.  You
+can manually snapTo a specific control index to provide external
+control of the scroll position for a carousel-like effect.  If you
+correctly size your components you can also define a 'peek' value to
+show a portion of the previous and next elements rather than snapping
+all the way to the item position - allowing a clip of the next/prev
+items if creating a carousel-like component.
+
+Specify the "horizontal" and "vertical" properties of a normal
+Scroller to define if it should snap vertically or horizontally.
+
+This component does not handle all the cases of the Enyo 1.0
+SnapScroller control.  It is intended for one main item in view at a
+time - may require additiona work to correctly handle some other cases
+- comments and pull requests welcome!
+
+
+See 'examples' for a demonstration on how to use it.
+
+
+Tested platforms include: iOS 5+, Chrome 17+, Safari 5.1+
 
 
 Copyright © 2012 Ryan Watkins <ryan@ryanwatkins.net>
