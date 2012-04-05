@@ -48,14 +48,16 @@ enyo.kind({
 //    onscroll: "scroll"
 //  },
 
-  position: {
-    start: null,
-    current: null,
-    previous: null,
-    to: null
-  },
-
   create: function() {
+
+    // cache position values
+    this.position = {
+      start: null,
+      current: null,
+      previous: null,
+      to: null
+    };
+
     this.inherited(arguments);
 
     // make this go faster
@@ -149,7 +151,6 @@ enyo.kind({
 
   snap: function() {
     var position = this.calculateSnapIndex();
-    // this.log(position);
     if (position !== undefined) {
       this.snapTo(position);
     }
@@ -176,7 +177,6 @@ enyo.kind({
   },
 
   calculateSnapIndex: function() {
-    // this.log();
     var forward = ((this.position.current - this.position.previous) > 0);
     // calculate position to snap to
     var controls = this.getControls().slice(1);
@@ -185,7 +185,6 @@ enyo.kind({
       var node = controls[l].hasNode();
       var edge = this.scrollHorizontal ? node.offsetLeft : node.offsetTop;
 
-      // this.log(this.position.current, edge, l);
       if (this.position.current < edge) {
         if (forward) {
           return l;
