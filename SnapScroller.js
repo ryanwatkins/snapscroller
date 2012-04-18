@@ -26,7 +26,7 @@ enyo.kind({
     /**
     Sets the index directly w/o animation or get the current state
     */
-    index: "",
+    index: 0,
     /**
     Num of px to reveal of the previous item in the list
     */
