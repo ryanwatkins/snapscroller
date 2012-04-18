@@ -20,7 +20,7 @@ time - may require additiona work to correctly handle some other cases
 See 'examples' for a demonstration on how to use it.
 
 
-Tested platforms include: iOS 5+, Chrome 17+, Safari 5.1+
+Tested platforms include: Android 2+, Chrome 17+, Safari 5.1+, Firefox 10+
 
 
 Copyright © 2012 Ryan Watkins <ryan@ryanwatkins.net>
