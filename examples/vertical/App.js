@@ -6,7 +6,7 @@ enyo.kind({
   components: [
 
     { name: "snapscroller", kind: "SnapScroller", classes: "scroller",
-      horizontal: "hidden", vertical: "scroll", // onluy scroll vertical
+      horizontal: "hidden", vertical: "scroll", // only scroll vertical
       onSnap: "scrollerSnapHandler",
       onSnapFinish: "scrollerSnapFinishHandler",
       components: [

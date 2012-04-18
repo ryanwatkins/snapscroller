@@ -103,10 +103,12 @@ enyo.kind({
 
   doScrollStart: function(inScrollerStrategy, inScrollMath) { // ?
     this.position.start = this.getCurrentPosition();
+    this.position.previous = this.position.start;
   },
 
   doScroll: function(inScrollerStrategy, inScrollMath) { // ??
     this.position.current = this.getCurrentPosition();
+
     if (this.$.strategy.dragging) {
       this.cansnap = true;
     } else if (!this.snapping && this.cansnap) {
@@ -115,14 +117,14 @@ enyo.kind({
     } else {
       // ...
     }
-    this.position.previous = this.position.current;
   },
 
   doScrollStop: function(inScrollerStrategy, inScrollMath) {  // ?
     if (this.snapping) {
+      var position = this.getCurrentPosition();
       this.snapping = false;
       // TODO: force scroll to exact px.
-      var position = this.getCurrentPosition();
+
       if (position != this.position.to) {
         // this.log("delta: " + Math.abs(position - this.position.to));
         this.directScrollTo(this.position.to);
@@ -133,7 +135,6 @@ enyo.kind({
 
   // scroll to a position for snapping animation
   snapScrollTo: function(inPosition) {
-    // this.log(inPosition);
     this.snapping = true;
     this.position.to = inPosition;
 
@@ -191,10 +192,8 @@ enyo.kind({
         } else {
           return (l-1);
         }
-
       }
     }
-
   },
 
   //* @public
