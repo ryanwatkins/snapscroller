@@ -1,0 +1,63 @@
+/* style.css */
+
+
+.vscroller {
+  height: 240px;
+  width: 240px;
+  border: 1px solid black;
+}
+
+.vscroller .scroller-slide {
+  height: 200px;
+  width: 160px;
+  padding: 20px;
+}
+
+.vscroller .scroller-slide.slide-a {
+  background-color: rgba(255,0,0,0.5);
+}
+
+.vscroller .scroller-slide.slide-b {
+  background-color: rgba(0,255,0,0.5);
+}
+
+.vscroller .scroller-slide.slide-c {
+  background-color: rgba(0,0,255,0.5);
+}
+
+.vscroller .scroller-slide.slide-d {
+  background-color: rgba(255,0,255,0.5);
+}
+
+.vscroller .scroller-slide.slide-e {
+  background-color: rgba(0,255,255,0.5);
+}
+
+
+.hscroller {
+  height: 240px;
+  width: 240px;
+  border: 1px solid black;
+}
+
+.hscroller > div {
+  white-space: nowrap;
+}
+
+.hscroller .scroller-slide {
+  display: inline-block;
+
+  height: 160px;
+  width: 200px;
+  padding: 20px;
+  background-color: rgba(0,0,255,0.5);
+}
+
+.hscroller .scroller-slide:first-child {
+  background-color: rgba(255,0,0,0.5);
+}
+
+.hscroller .scroller-slide:last-child {
+  background-color: rgba(0,255,0,0.5);
+}
+
