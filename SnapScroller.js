@@ -19,8 +19,8 @@ enyo.kind({
   name: "SnapScroller",
   kind: "Scroller",
 
-  //  preventDragPropagation: true, // ?
-  strategyKind: "TouchScrollStrategy",  // - Native on iOS5+ / Android 3+, but lacks scrollStart / scrollStop ??
+  //  preventDragPropagation: true,
+  strategyKind: "TouchScrollStrategy",  // when work calms, look at more performant strategy options
 
   published: {
     /**
@@ -43,10 +43,6 @@ enyo.kind({
     */
     onSnapFinish: ""
   },
-
-//  handlers: {
-//    onscroll: "scroll"
-//  },
 
   create: function() {
 
@@ -81,7 +77,7 @@ enyo.kind({
   peekChanged: function() {
     var peek = this.getPeek();
 
-    // a bit of a hack, as this would clobber existing styles
+    // TODO: a bit of a hack, as this would clobber existing styles
     var scroller = this.$.strategy.$.client;
     if (peek && scroller) {
       if (this.scrollHorizontal) {
@@ -95,10 +91,10 @@ enyo.kind({
   },
 
   indexChanged: function() {
-		var position = this.calculatePosition(this.index);
-		if (position !== undefined) {
-			this.directScrollTo(position);
-		}
+    var position = this.calculatePosition(this.index);
+    if (position !== undefined) {
+      this.directScrollTo(position);
+    }
   },
 
   doScrollStart: function(inScrollerStrategy, inScrollMath) { // ?
@@ -215,13 +211,11 @@ enyo.kind({
   },
 
   prev: function() {
-    // if we dont have scrollStop() yet this does not run
-		!this.snapping && this.snapTo(this.index-1);
+    !this.snapping && this.snapTo(this.index-1);
   },
 
   next: function() {
-    // if we dont have scrollStop() yet this does not run
-		!this.snapping && this.snapTo(this.index+1);
+    !this.snapping && this.snapTo(this.index+1);
   }
 
 });
