@@ -19,8 +19,8 @@ enyo.kind({
   name: "SnapScroller",
   kind: "Scroller",
 
-  //  preventDragPropagation: true,
   strategyKind: "TouchScrollStrategy",  // when work calms, look at more performant strategy options
+  thumb: false,
 
   published: {
     /**
@@ -42,6 +42,12 @@ enyo.kind({
     Event that fires when snapping to a position completes
     */
     onSnapFinish: ""
+  },
+
+  handlers: {
+    onScroll: "doScroll",
+    onScrollStart: "doScrollStart",
+    onScrollStop: "doScrollStop"
   },
 
   create: function() {
@@ -97,7 +103,7 @@ enyo.kind({
     }
   },
 
-  doScrollStart: function(inScrollerStrategy, inScrollMath) { // ?
+  doScrollStart: function(inScrollerStrategy, inScrollMath) { // ? 
     this.position.start = this.getCurrentPosition();
     this.position.previous = this.position.start;
   },
