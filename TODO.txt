@@ -1,5 +1,0 @@
-- see if the logic for which direction to snap to makes sense in Touch cases.
-- investigate if we can use non-TouchScrollStrategy versions where possible
-
-BUG: 
-- in current (2 apr) master version overscroll on first/last can get 'stuck'

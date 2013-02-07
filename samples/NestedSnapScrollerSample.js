@@ -1,15 +1,15 @@
-/* App.js */
+/* NestedSnapScrollerSample.js */
 
 enyo.kind({
-  name: "App",
+  name: "NestedSnapScrollerSample",
   classes: "enyo-unselectable",
   components: [
 
-    { name: "vsnapscroller", kind: "SnapScroller", classes: "vscroller",
+    { name: "vsnapscroller", kind: "rwatkins.SnapScroller", classes: "vscroller",
       horizontal: "hidden", vertical: "scroll", // only scroll vertical
       components: [
 
-        { name: "hsnapscroller", kind: "SnapScroller", classes: "hscroller",
+        { name: "hsnapscroller", kind: "rwatkins.SnapScroller", classes: "hscroller",
           horizontal: "scroll", vertical: "hidden", // only scroll horizontal
           onSnap: "hscrollerSnapHandler",
           onSnapFinish: "hscrollerSnapFinishHandler",

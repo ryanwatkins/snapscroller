@@ -1,11 +1,11 @@
-/* App.js */
+/* VerticalSnapScrollerSample.js */
 
 enyo.kind({
-  name: "App",
+  name: "VerticalSnapScrollerSample",
   classes: "enyo-unselectable",
   components: [
 
-    { name: "snapscroller", kind: "SnapScroller", classes: "scroller",
+    { name: "snapscroller", kind: "rwatkins.SnapScroller", classes: "scroller",
       horizontal: "hidden", vertical: "scroll", // only scroll vertical
       onSnap: "scrollerSnapHandler",
       onSnapFinish: "scrollerSnapFinishHandler",

@@ -1,21 +1,20 @@
-/* App.js */
+/* HorizontalSnapScrollerSample.js */
 
 enyo.kind({
-  name: "App",
+  name: "HorizontalSnapScrollerSample",
   classes: "enyo-unselectable",
   components: [
 
-    { name: "snapscroller", kind: "SnapScroller", classes: "scroller",
+    { name: "snapscroller", kind: "rwatkins.SnapScroller", classes: "scroller",
+
       horizontal: "scroll", vertical: "hidden", // only scroll horizontal
-      peek: "20", // px of previous item to revel
       onSnap: "scrollerSnapHandler",
       onSnapFinish: "scrollerSnapFinishHandler",
+      // css required to stack items horizontally for scroll
       components: [
         { name: "slide-a", classes: "scroller-slide", content: "Slide A" },
         { name: "slide-b", classes: "scroller-slide", content: "Slide B" },
-        { name: "slide-c", classes: "scroller-slide", content: "Slide C" },
-        { name: "slide-d", classes: "scroller-slide", content: "Slide D" },
-        { name: "slide-e", classes: "scroller-slide", content: "Slide E" }
+        { name: "slide-c", classes: "scroller-slide", content: "Slide C" }
       ]
     },
 
@@ -23,8 +22,6 @@ enyo.kind({
     { kind: "Button", content: "A", slide: "0", ontap: "buttonTapHandler" },
     { kind: "Button", content: "B", slide: "1", ontap: "buttonTapHandler" },
     { kind: "Button", content: "C", slide: "2", ontap: "buttonTapHandler" },
-    { kind: "Button", content: "D", slide: "3", ontap: "buttonTapHandler" },
-    { kind: "Button", content: "E", slide: "4", ontap: "buttonTapHandler" },
     { kind: "Button", content: "next", slide: "next", ontap: "buttonTapHandler" },
     { name: "state" }
 
